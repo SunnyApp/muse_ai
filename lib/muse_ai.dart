@@ -2,6 +2,8 @@ library muse_ai;
 
 import 'package:muse_ai/muse_collections.dart';
 import 'package:dio/dio.dart';
+export 'muse_index.dart';
+export 'muse_collections.dart';
 
 class MuseAI {
   final String apiKey;
@@ -9,17 +11,16 @@ class MuseAI {
   MuseAI(this.apiKey)
       : assert(apiKey != null, "You must provide an api key"),
         _dio = Dio(BaseOptions(
-            headers: {"Authorization": "Bearer $apiKey"},
-            baseUrl: "https://vv8-9-0.muse.ai/api"));
+            headers: {"Key": apiKey}, baseUrl: "https://vv8-9-0.muse.ai/api"));
 
-  Future<MuseCollections> collections() async {
-    final resp = await _dio.get<Map<String, dynamic>>("/files/collections");
+  Future<List<MuseCollection>> collections() async {
+    final resp = await _dio.get<List>("/files/collections");
     return fromResponse(resp);
   }
 
-  MuseCollections fromResponse(Response<Map<String, dynamic>> response) {
+  List<MuseCollection> fromResponse(Response<List> response) {
     if (response.statusCode == 200) {
-      return MuseCollections.fromJson(response.data);
+      return response.data.map((l) => MuseCollection.fromJson(l)).toList();
     } else {
       throw "Invalid response from ipstack: status=${response.statusCode}, body=${response.data}";
     }

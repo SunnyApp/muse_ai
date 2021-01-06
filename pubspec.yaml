@@ -1,6 +1,6 @@
 name: muse_ai
-author: ericmartineau
-version: 0.4.4+1
+repository: https://github.com/SunnyApp/muse_ai
+version: 0.4.4+2
 description: Integrating with MUSE.ai
 environment: 
   sdk: '>=2.7.0 <3.0.0'
@@ -13,6 +13,3 @@ dependencies:
 dev_dependencies: 
   flutter_test: 
     sdk: flutter
-dependency_overrides: 
-  dio: 
-    path: ../dio/dio

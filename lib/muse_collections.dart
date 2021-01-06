@@ -62,6 +62,10 @@ class MuseVideo {
     map["url"] = url;
     return map;
   }
+
+  String format(String format, {String size}) {
+    return "https://cdn.muse.ai/w/${fid}/videos/video${size == null ? '' : '-$size'}.$format";
+  }
 }
 
 extension ListOfMuseCollectionsExt on List<MuseCollection> {

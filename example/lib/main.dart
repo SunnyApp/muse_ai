@@ -15,6 +15,9 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   String _platformVersion = 'Unknown';
+  MuseIndex _index;
+  MuseAI _museAI;
+  bool _loading = false;
 
   @override
   void initState() {
@@ -22,13 +25,24 @@ class _MyAppState extends State<MyApp> {
     initPlatformState();
   }
 
+  _updateApiKey(String key) async {
+    if (key != null) {
+      _museAI = MuseAI(key);
+      setState(() {
+        _loading = true;
+      });
+      _index = (await _museAI.collections()).index();
+      setState(() {
+        _loading = true;
+      });
+    }
+  }
+
   // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> initPlatformState() async {
     String platformVersion;
     // Platform messages may fail, so we use a try/catch PlatformException.
-    try {
-      platformVersion = await MuseAi.platformVersion;
-    } on PlatformException {
+    try {} on PlatformException {
       platformVersion = 'Failed to get platform version.';
     }
 
@@ -47,10 +61,27 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Plugin example app'),
+          title: const Text('Muse Example App'),
         ),
-        body: Center(
-          child: Text('Running on: $_platformVersion\n'),
+        body: Container(
+          padding: EdgeInsets.all(26),
+          child: ListView(
+            children: [
+              TextField(
+                textCapitalization: TextCapitalization.none,
+                decoration: InputDecoration(
+                  helperText: "Paste muse.ai API key",
+                ),
+                onChanged: (value) {
+                  _updateApiKey(value);
+                },
+              ),
+              if (_loading)
+                Center(child: CircularProgressIndicator())
+              else if (_museAI != null)
+                Container(color: Colors.red)
+            ],
+          ),
         ),
       ),
     );

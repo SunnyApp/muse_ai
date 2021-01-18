@@ -1,8 +1,8 @@
 name: muse_ai
-version: 0.4.4+5
+version: 0.4.4+6
+homepage: https://github.com/SunnyApp/muse_ai
 description: Integrating with MUSE.ai
 repository: https://github.com/SunnyApp/muse_ai
-homepage: https://github.com/SunnyApp/muse_ai
 environment: 
   sdk: '>=2.7.0 <3.0.0'
   flutter: '>=1.17.0'

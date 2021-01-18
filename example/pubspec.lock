@@ -121,6 +121,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.6.3-nullsafety.3"
+  logging:
+    dependency: transitive
+    description:
+      name: logging
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.11.4"
   matcher:
     dependency: transitive
     description:
@@ -141,7 +148,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "0.4.4+1"
+    version: "0.4.4+4"
   path:
     dependency: transitive
     description:

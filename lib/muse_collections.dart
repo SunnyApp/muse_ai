@@ -71,3 +71,6 @@ class MuseVideo {
 extension ListOfMuseCollectionsExt on List<MuseCollection> {
   MuseIndex index() => MuseIndex(this);
 }
+extension FutureListOfMuseCollectionsExt on Future<List<MuseCollection>> {
+  Future<MuseIndex> index() async => MuseIndex(await this);
+}

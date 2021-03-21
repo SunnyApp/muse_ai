@@ -14,10 +14,7 @@ class MuseAI {
   final Dio _dio;
 
   MuseAI(this.apiKey, {this.baseUrl = "https://www.muse.ai/api"})
-      : assert(apiKey != null, "You must provide an api key"),
-        assert(baseUrl != null, "BaseURL cannot be null"),
-        _dio = Dio(BaseOptions(
-            headers: {"Key": apiKey}, baseUrl: baseUrl));
+      : _dio = Dio(BaseOptions(headers: {"Key": apiKey}, baseUrl: baseUrl));
 
   Future<List<MuseCollection>> collections() async {
     try {
@@ -31,10 +28,9 @@ class MuseAI {
 
   List<MuseCollection> fromResponse(Response<List> response) {
     if (response.statusCode == 200) {
-      return response.data.map((l) => MuseCollection.fromJson(l)).toList();
+      return response.data!.map((l) => MuseCollection.fromJson(l)).toList();
     } else {
-      throw "Invalid response from muse AI: status=${response
-          .statusCode}, body=${response.data}";
+      throw "Invalid response from muse AI: status=${response.statusCode}, body=${response.data}";
     }
   }
 }

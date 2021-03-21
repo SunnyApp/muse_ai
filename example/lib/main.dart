@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'dart:async';
-import 'collection_view.dart';
 import 'package:flutter/services.dart';
 import 'package:muse_ai/muse_ai.dart';
+
+import 'collection_view.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,8 +14,8 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  MuseIndex _index;
-  MuseAI _museAI;
+  MuseIndex? _index;
+  late MuseAI _museAI;
   bool _error = false;
   bool _loading = false;
 
@@ -25,23 +25,21 @@ class _MyAppState extends State<MyApp> {
   }
 
   _updateApiKey(String key) async {
-    if (key != null) {
-      _museAI = MuseAI(key);
+    _museAI = MuseAI(key);
+    setState(() {
+      _error = false;
+      _loading = true;
+    });
+    try {
+      _index = (await _museAI.collections()).index();
       setState(() {
-        _error = false;
-        _loading = true;
+        _loading = false;
       });
-      try {
-        _index = (await _museAI.collections()).index();
-        setState(() {
-          _loading = false;
-        });
-      } catch (e) {
-        setState(() {
-          _error = true;
-          _loading = false;
-        });
-      }
+    } catch (e) {
+      setState(() {
+        _error = true;
+        _loading = false;
+      });
     }
   }
 
@@ -87,7 +85,7 @@ class _MyAppState extends State<MyApp> {
                       "Collections",
                     ),
                   ),
-                  for (var x in _index.collections)
+                  for (var x in _index!.collections)
                     ListTile(
                         onTap: () {
                           Navigator.of(context).push(
@@ -103,7 +101,7 @@ class _MyAppState extends State<MyApp> {
                             ),
                           );
                         },
-                        title: Text(x.name),
+                        title: Text(x.name!),
                         trailing: x.visibility == "unlisted"
                             ? Icon(Icons.remove_red_eye_rounded)
                             : null),

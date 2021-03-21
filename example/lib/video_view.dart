@@ -8,8 +8,8 @@ class VideoView extends StatefulWidget {
   final MuseVideo video;
 
   const VideoView({
-    Key key,
-    @required this.video,
+    Key? key,
+    required this.video,
   }) : super(key: key);
 
   @override
@@ -17,8 +17,8 @@ class VideoView extends StatefulWidget {
 }
 
 class _VideoViewState extends State<VideoView> {
-  ChewieController _chewie;
-  VideoPlayerController _vp;
+  late ChewieController _chewie;
+  late VideoPlayerController _vp;
 
   @override
   void initState() {

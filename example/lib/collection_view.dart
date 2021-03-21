@@ -4,11 +4,11 @@ import 'package:muse_ai/muse_ai.dart';
 import 'video_view.dart';
 
 class CollectionView extends StatefulWidget {
-  final MuseIndex museIndex;
+  final MuseIndex? museIndex;
   final MuseCollection collection;
 
   const CollectionView(
-      {Key key, @required this.museIndex, @required this.collection})
+      {Key? key, required this.museIndex, required this.collection})
       : super(key: key);
 
   @override
@@ -33,7 +33,7 @@ class _CollectionViewState extends State<CollectionView> {
               Navigator.of(context).pop();
             },
           ),
-          title: Text(widget.collection.name),
+          title: Text(widget.collection.name!),
         ),
         body: Container(
           padding: EdgeInsets.all(26),
@@ -45,7 +45,7 @@ class _CollectionViewState extends State<CollectionView> {
                   "Videos",
                 ),
               ),
-              for (var video in widget.collection.videos)
+              for (var video in widget.collection.videos!)
                 ListTile(
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
@@ -55,9 +55,9 @@ class _CollectionViewState extends State<CollectionView> {
                           fullscreenDialog: true,
                           maintainState: true));
                     },
-                    title: Text(video.title),
+                    title: Text(video.title!),
                     trailing:
-                        Text("${Duration(seconds: video.duration.toInt())}"))
+                        Text("${Duration(seconds: video.duration!.toInt())}"))
             ],
           ),
         ),

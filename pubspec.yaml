@@ -1,5 +1,5 @@
 name: muse_ai
-version: 0.5.1-nullsafety.1
+version: 0.6.0
 homepage: https://github.com/SunnyApp/muse_ai
 description: Integrating with MUSE.ai
 repository: https://github.com/SunnyApp/muse_ai
@@ -9,7 +9,7 @@ environment:
 dependencies: 
   pedantic: ^1.11.0
   logging: ^1.0.0
-  dartxx: ^0.4.4+6
+  dartxx: ^0.5.0+2
   dio: ^4.0.0-prev3
   flutter: 
     sdk: flutter

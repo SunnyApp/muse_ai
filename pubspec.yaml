@@ -7,10 +7,11 @@ environment:
   sdk: '>=2.12.0 <3.0.0'
   flutter: '>=1.17.0'
 dependencies: 
-  pedantic: ^1.11.0
-  logging: ^1.0.0
-  dartxx: ^0.5.0+2
+  pedantic: ^1.11.1
+  logging: ^1.0.2
   dio: ^4.0.0-prev3
+  dartxx: 
+    path: /Users/ericm/sunny/player_rank/packages/dartxx
   flutter: 
     sdk: flutter
 dev_dependencies: 

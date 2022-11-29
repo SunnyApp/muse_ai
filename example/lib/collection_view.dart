@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:muse_ai/muse_ai.dart';
 import 'video_view.dart';
 

@@ -9,7 +9,9 @@ dependencies:
   flutter: 
     sdk: flutter
   muse_ai: 
-    path: /Users/ericm/sunny/trippi_plugins/muse_ai
+    git: 
+      url: git@github.com:SunnyApp/muse_ai
+      ref: trippi_app
 dev_dependencies: 
   flutter_test: 
     sdk: flutter

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:muse_ai/muse_ai.dart';
 
 import 'collection_view.dart';

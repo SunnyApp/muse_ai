@@ -9,9 +9,9 @@ environment:
 dependencies: 
   pedantic: ^1.11.1
   logging: ^1.0.2
-  dio: ^4.0.0-prev3
+  dio: ^4.0.4
   dartxx: 
-    path: /Users/ericm/sunny/player_rank/packages/dartxx
+    path: /Users/ericm/sunny/local_plugins/dartxx
   flutter: 
     sdk: flutter
 dev_dependencies: 

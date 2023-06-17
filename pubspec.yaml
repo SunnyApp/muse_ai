@@ -8,10 +8,10 @@ environment:
   flutter: '>=1.17.0'
 dependencies: 
   pedantic: ^1.11.1
-  logging: ^1.0.2
-  dio: ^4.0.4
+  logging: 1.2.0
+  dio: ^5.2.0+1
   dartxx: 
-    path: /Users/ericm/sunny/local_plugins/dartxx
+    path: /Users/ericm/aesthetika/checkout/ericmartineau/dartxx
   flutter: 
     sdk: flutter
 dev_dependencies: 
